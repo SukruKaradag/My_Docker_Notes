@@ -15,4 +15,4 @@ docker network disconnect "network_name" "container_name_or_id" # Container'ı n
 - Oluşturulan Network'ün subnet, ip range ve gateway'i belirtilebilir:
 ```docker network create --driver=bridge --subnet=10.10.0.0/16 --ip-range=10.10.10.0/24 --gateway=10.10.10.10 "network_name"```
 - Kullanıcı tanımlı bridge network'lere bağlı olan bir container başka bir network'e bağlabilir. Container default bridge'e bağlıysa bu işlem gerçekleşmez.
-- Container'a bağlı olan bir network silinemez.("-f" dahil) Containerların silinmesi veya durdurulması gerekir. Network silme işlemi bağlı olan container'ların durdurulması yolu ile gerçekleştiyse, o container'lar tekrar start edilemez ve başka bir network'e bağlatılamaz.
+- Container'a bağlı olan bir network silinemez.("-f" dahil) Containerların silinmesi veya durdurulması gerekir. Network silme işlemi bağlı olan container'ların durdurulması yolu ile gerçekleştiyse, o container'lar tekrar start edilemez ve başka bir network'e bağlatılamaz. Network ID kullanılarak aynı network yaratılırsa container tekrar çalışabilir.
