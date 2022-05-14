@@ -52,6 +52,14 @@ SHELL | Dockerfile'ın komutları işleyeceği shell'in hangisi olduğunu belirt
 - ```EXPOSE``` Image'dan oluşturulacak container'ların hangi portlardan yayın yapacağı belirtilir.
 - ```CMD```  Container oluşturulduktan sonra default olarak çalıştırılması istenen komut girilir. ```RUN```'dan farkı ise ```RUN``` Image'ın oluşturulması için gereken bir veya birden fazla komutu kapsarken, ```CMD``` o image'dan yaratılmış olan container'ın içinde default olarak çalışacak komut içindir.
 - ```HEALTHCHECK``` Belirtilen parametrelere gör container'ın sağlık durumunu sorgular. Örn.:```HEALTHCHECK --interval=5m --timeout=3s ``` 
+- Dockerfile'da yapılan tüm değişiklikler, yapılan değişiklikten sonraki katmanları da etkiler. Öncesi için cache'den işlem yapar.  
 ## Commands
-- ```docker image build -t deneme/merhaba -f Dockerfile.```
+```bash
+docker image build -t deneme/merhaba . # Komut Dockerfile'ın olduğu directory'de çalıştırılır.
+docker image build -t deneme/merhaba -f "dosya_adı" . # Dockerfile'ın adı farklı ise veya komut Dockerfile'ın oldu directory'de değilse "-f" 
+verilerek dosya ve yolu belirtilir.
+docker image tag "image_id" "image_tag" # Image'a tag vermek için.
+```
+
 - docker image history "image name" image'nin katmanları/geçmişini gösterir. 
+- ```-t``` ile image'a bir tag verilir.
