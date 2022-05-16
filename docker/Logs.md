@@ -13,6 +13,6 @@ docker container run --log-driver "logging_driver" "image" # Container belirtile
 
 ## Log Notes
 
-- loglar ```/dev/fd/``` altındaki stdin, stdout ve stderr'den alınır.
+- loglar ```/dev/fd/``` altındaki stdin(0), stdout(1) ve stderr(2)'den alınır.
 - ```-f``` stands for follow.
 - Default logging driver "json-file" dır. Docker awslogs, fluentd, gcplogs, gelf, journald, json-file, local, logentries, splunk ve syslog driver'larını da destekler. İstenilen driver default olarak seçilebilir.
