@@ -1,4 +1,4 @@
-## Dockerfile açıklama
+# Dockerfile ile image oluşturma
 
 FROM | Oluşturulacak imajın hangi imajdan oluşturulacağını belirten talimat. Dockerfile içerisinde geçmesi mecburi tek talimat budur. Mutlaka olmalıdır. 
 Ör: FROM ubuntu:18.04
@@ -52,7 +52,21 @@ SHELL | Dockerfile'ın komutları işleyeceği shell'in hangisi olduğunu belirt
 - ```EXPOSE``` Image'dan oluşturulacak container'ların hangi portlardan yayın yapacağı belirtilir.
 - ```CMD```  Container oluşturulduktan sonra default olarak çalıştırılması istenen komut girilir. ```RUN```'dan farkı ise ```RUN``` Image'ın oluşturulması için gereken bir veya birden fazla komutu kapsarken, ```CMD``` o image'dan yaratılmış olan container'ın içinde default olarak çalışacak komut içindir.
 - ```HEALTHCHECK``` Belirtilen parametrelere gör container'ın sağlık durumunu sorgular. Örn.:```HEALTHCHECK --interval=5m --timeout=3s ``` 
-- Dockerfile'da yapılan tüm değişiklikler, yapılan değişiklikten sonraki katmanları da etkiler. Öncesi için cache'den işlem yapar.  
+- Dockerfile'da yapılan tüm değişiklikler, yapılan değişiklikten sonraki katmanları da etkiler. Öncesi için cache'den işlem yapar.
+- ``ADD`` ``COPY``'ile aynı işlemi yapar. Farklı olarak web sunucudan kopyalama yapar. Dosya sıkıştırılmışsa hedefe açarak atar.
+- ``ARG`` Dockerfile içinde değişken tanımlamaya yarar. "ARG" build aşamasında kullanılır. "ENV" ``container run`` aşamasında.
+  Örn.: 
+  ```bash
+    # Dockerfile yazılır.
+    FROM ubuntu:latest
+    WORKDIR /gecici
+    ARG VERSION
+    ADD https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz .
+    CMD ls -al
+    # Built aşamasında "ARG" değeri verilir.
+    docker image build -t app:ARG --build-arg VERSION=3.7.1 .
+   ```
+
 ## Commands
 ```bash
 docker image build -t deneme/merhaba . # Komut Dockerfile'ın olduğu directory'de çalıştırılır.
@@ -63,3 +77,8 @@ docker image tag "image_id" "image_tag" # Image'a tag vermek için.
 
 - docker image history "image name" image'nin katmanları/geçmişini gösterir. 
 - ```-t``` ile image'a bir tag verilir.
+
+# Docker commit ile image oluşturma
+``docker commit "container_name" "image_name":latest``
+``docker commit`` komutunu verirken de Dockerfile komutları girilebilir:
+``docker commit -c 'WORKDIR /app/' "container_name" "image_name"`` 

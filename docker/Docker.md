@@ -82,3 +82,4 @@ docker image prune -a # unused ve dangling'leri siler. "image" yerine "container
 - Default'da açılan portların hepsi TCP olarak açılır, aksi ``` -p 80:80/udp ``` yazılarak belirtilmeli. "-p" parametresi ile sadece bir port belirtilirse externalport otomatik belirlenir.
 
 - ``` -d ve -it beraber -dit olarak da kullanılabilir. Açılan termimal arkaplanda açılır.```
+- ````docker cp container:/usr/src/app destination```` Container içinden dosya almak için kullanılır.
