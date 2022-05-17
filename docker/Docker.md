@@ -1,6 +1,6 @@
 ## Docker Kurulum
 
-- Docker ubuntu kurulum
+- Docker Ubuntu kurulum
 
 ```bash
 sudo apt-get update 
@@ -18,12 +18,12 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
-- docker Linux kurulum:
+- Docker AWS Linux kurulum:
 
 ```bash
 sudo yum update -y
 sudo yum install -y docker
-sudo usermod -aG docker ubuntu
+sudo usermod -aG docker ec2-user
 newgrp docker
 sudo systemctl start docker
 sudo systemctl enable docker
