@@ -72,7 +72,7 @@ SHELL | Dockerfile'ın komutları işleyeceği shell'in hangisi olduğunu belirt
 docker image build -t deneme/merhaba . # Komut Dockerfile'ın olduğu directory'de çalıştırılır.
 docker image build -t deneme/merhaba -f "dosya_adı" . # Dockerfile'ın adı farklı ise veya komut Dockerfile'ın oldu directory'de değilse "-f" 
 verilerek dosya ve yolu belirtilir.
-docker image tag "image_id" "image_tag" # Image'a tag vermek için.
+docker image tag "source_image" "new_image_tag" # Image'a tag vermek için.
 ```
 
 - docker image history "image name" image'nin katmanları/geçmişini gösterir. 
