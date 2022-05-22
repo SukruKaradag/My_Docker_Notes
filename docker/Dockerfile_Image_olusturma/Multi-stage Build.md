@@ -1,5 +1,7 @@
+# Multi-stage Build
 - Image oluşturma işlemi sırasında birden fazla image oluşturulabilir ve bunlar arasında etkileşim sağlanabilir. Buna "Multi-stage Build" denir.
- verilen örnekte bir Dockerfile'dan iki image(stage) oluşturulmuştur. İlk stage'de Java source code'u build(compile) edilmiş, ikinci stage'de ise bu build çekilip yeni bir image oluşuturulmuştur.
+ Aşağıda verilen örnekte bir Dockerfile'dan iki image(stage) oluşturulmuştur. İlk stage'de Java source code'u build(compile) edilmiş, ikinci stage'de ise bu build çekilip yeni bir image oluşuturulmuştur.
+
 ```bash
 # Java code'unun Build işlemi için jdk imajından base image oluşturuluyor
 FROM mcr.microsoft.com/java/jdk:8-zulu-alpine AS derleyici
