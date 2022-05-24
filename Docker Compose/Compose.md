@@ -18,5 +18,6 @@
 ## Commands
 ```bash
 docker compose up -d 
-docker compose down #oluşan tüm servisler silinir.
+docker compose down # oluşan tüm servisler silinir.
+docker compose build # compose aşamasında Dockerfile ile image oluşturulduysa "docker compose up" tekrarlandığında hali hazırda yarılmış olan image kullanılır. Dolayısıyla yapılan değişiklikler image'da olmaz. Bunun için bu komut girilerek image yeniden oluşturulur. 
 ```
