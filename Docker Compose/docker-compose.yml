@@ -1,11 +1,11 @@
 # docker-compose for wordpress website 
 version: "3.7"
 services:
-  veritabani:
+  db-server:
     image: mysql:5.7
     restart: always
     volumes:
-      - verilerim:/var/lib/mysql
+      - datas:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
       MYSQL_DATABASE: wordpress
@@ -16,12 +16,12 @@ services:
   wordpress:
     image: wordpress:latest
     depends_on:
-      - veritabani
+      - db-server
     restart: always
     ports:
       - "80:80"
     environment:
-      WORDPRESS_DB_HOST: veritabani:3306
+      WORDPRESS_DB_HOST: db-server:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
@@ -29,7 +29,7 @@ services:
       - wpnet
 
 volumes:
-  verilerim:
+  datas:
 
 networks:
   wpnet:
