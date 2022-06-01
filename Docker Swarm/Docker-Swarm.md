@@ -29,13 +29,13 @@ docker service rollback --detach websrv ## update geri alınır.
 ```
 
 ## Secret
-docker create secret "name" "./file_name"
+``docker create secret "name" "./file_name"``
 or
-echo "password" | docker secret create "secret_name" -
+``echo "password" | docker secret create "secret_name" - ``
 
 - secret'lar container içindeki "/run/secrets" directory'sindedir.
 
-docker service update --secret-rm "old_secret" --secret-add "new_secret" "secret_name" "service_name"
+``docker service update --secret-rm "old_secret" --secret-add "new_secret" "secret_name" "service_name"``
 
 ## Swarm notes
 - Ports:
